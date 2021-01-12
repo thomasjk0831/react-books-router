@@ -1,6 +1,7 @@
 const express = require('express')
 const server = express()
 const CORS = require('cors')
+const { json } = require('express')
 
 server.use(express.json())
 server.use(CORS())
@@ -43,6 +44,21 @@ const books = [
 server.get('/', (req, res) => {
     res.status(200).json({ msg: "api working" })
 })
+
+server.get('/api/books', (req, res) => {
+    res.status(200).json({ data: books })
+})
+
+server.get('/api/books/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const found = books.find(b => b.id === id)
+    if (found) {
+        res.status(200).json({ data: found })
+    }
+    else
+        res.status(404).json({ msg: "error" })
+})
+
 
 const port = 5001
 server.listen(port, () => {

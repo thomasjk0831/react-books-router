@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Book() {
+    const { id } = useParams()
+    const [movie, setMovie] = useState({})
+
+    useEffect(() => {
+        axios.get(`http://localhost:5001/api/books/${id}`)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }, [])
+
     return (
         <div>
-            Book
+            <Link to='/'>Home</Link>
+            <div>Book {id}</div>
         </div>
     )
 }

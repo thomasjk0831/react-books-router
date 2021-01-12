@@ -10,32 +10,32 @@ const books = [
     {
         id: 0,
         title: 'The Godfather',
-        director: 'Mario Puzo',
+        author: 'Mario Puzo',
         genre: 'crime',
     },
     {
         id: 1,
         title: '1984',
-        director: 'George Orwell',
+        author: 'George Orwell',
         genre: "dystopian",
 
     },
     {
         id: 2,
         title: 'The Lord of the Rings: The Fellowship of the Ring',
-        director: 'J.R.R. Tolkien',
+        author: 'J.R.R. Tolkien',
         genre: "fantasy",
     },
     {
         id: 3,
         title: 'Of Mice and Men',
-        director: 'John Steinbeck',
+        author: 'John Steinbeck',
         genre: "social",
     },
     {
         id: 4,
         title: 'The Odyssey',
-        director: 'Homer',
+        author: 'Homer',
         genre: "mythology",
     },
 
@@ -46,14 +46,14 @@ server.get('/', (req, res) => {
 })
 
 server.get('/api/books', (req, res) => {
-    res.status(200).json({ data: books })
+    res.status(200).json({ books })
 })
 
 server.get('/api/books/:id', (req, res) => {
     const id = Number(req.params.id)
     const found = books.find(b => b.id === id)
     if (found) {
-        res.status(200).json({ data: found })
+        res.status(200).json(found)
     }
     else
         res.status(404).json({ msg: "error" })

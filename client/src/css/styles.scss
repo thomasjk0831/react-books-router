@@ -1,0 +1,14 @@
+@mixin borderBox(){
+    border: 1px solid black;
+  }
+  
+
+.App {
+    text-align: center;
+  }
+
+.book-container{
+    @include borderBox();
+    cursor: pointer;
+}
+  

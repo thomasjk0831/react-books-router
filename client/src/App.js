@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Route } from 'react-router-dom'
 import Booklist from './components/Booklist'
 import Book from './components/Book'
+import Saved from './components/Saved'
 import axios from 'axios'
 import './css/styles.css';
 
@@ -20,15 +21,21 @@ function App() {
       })
   }, [])
 
+  const saveBook = (id) => {
+    const book = books.find(b => b.id === Number(id))
+    console.log(book)
+    setSaved([...saved, book])
+  }
 
   return (
     <div className="App">
+      <Saved saved={saved} />
       <Route exact path="/">
         <Booklist books={books} />
       </Route>
 
       <Route exact path="/book/:id">
-        <Book saved={saved} />
+        <Book saved={saved} saveBook={saveBook} />
       </Route>
     </div>
   );

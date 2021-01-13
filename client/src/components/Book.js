@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 
-function Book({ saved }) {
+function Book({ saved, saveBook }) {
     const { id } = useParams()
     const [book, setBook] = useState({})
 
@@ -16,7 +16,7 @@ function Book({ saved }) {
         const found = saved.find(s => s.id === Number(id))
         console.log(found)
         if (!found)
-            saved.push(book)
+            saveBook(id)
     }
 
     return (
@@ -25,12 +25,13 @@ function Book({ saved }) {
             {
                 !book ? <div>loading</div> : null
             }
-            <div className="book-container" onClick={addSaved}>
+            <div className="book-container" >
                 <div>Book: {book.title}</div>
                 <div>Author: {book.author}</div>
                 <div>Genre: {book.genre}</div>
 
             </div>
+            <div onClick={addSaved} className="button-container">Save</div>
         </div>
     )
 }

@@ -9,4 +9,12 @@
   margin: 10px auto;
   padding: 15px;
 }
+
+.button-container {
+  width: 100px;
+  border: 1px solid black;
+  cursor: pointer;
+  margin: 10px auto;
+  padding: 10px;
+}
 /*# sourceMappingURL=styles.css.map */

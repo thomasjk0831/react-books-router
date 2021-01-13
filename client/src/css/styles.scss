@@ -1,6 +1,12 @@
 @mixin borderBox(){
     border: 1px solid black;
   }
+
+  @mixin linkBox($padding){
+    cursor: pointer;
+    margin: 10px auto;
+    padding: $padding;
+  }
   
 
 .App {
@@ -10,8 +16,14 @@
 .book-container{
     @include borderBox();
     width: 80%;
-    cursor: pointer;
-    margin: 10px auto;
-    padding: 15px;
+    @include linkBox(15px);
+
+}
+
+.button-container{
+  width: 100px;
+  @include borderBox();
+  @include linkBox(10px);
+  
 }
   

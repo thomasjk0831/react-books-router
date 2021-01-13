@@ -8,6 +8,7 @@ import './css/styles.css';
 
 function App() {
   const [books, setBooks] = useState([])
+  const [saved, setSaved] = useState([])
   useEffect(() => {
     axios.get('http://localhost:5001/api/books')
       .then(res => {
@@ -27,7 +28,7 @@ function App() {
       </Route>
 
       <Route exact path="/book/:id">
-        <Book />
+        <Book saved={saved} />
       </Route>
     </div>
   );

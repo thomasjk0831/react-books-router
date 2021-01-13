@@ -2,20 +2,35 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 
-function Book() {
+function Book({ saved }) {
     const { id } = useParams()
-    const [movie, setMovie] = useState({})
+    const [book, setBook] = useState({})
 
     useEffect(() => {
         axios.get(`http://localhost:5001/api/books/${id}`)
-            .then(res => console.log(res))
+            .then(res => setBook(res.data))
             .catch(err => console.log(err))
     }, [])
 
+    const addSaved = () => {
+        const found = saved.find(s => s.id === Number(id))
+        console.log(found)
+        if (!found)
+            saved.push(book)
+    }
+
     return (
-        <div>
+        <div >
             <Link to='/'>Home</Link>
-            <div>Book {id}</div>
+            {
+                !book ? <div>loading</div> : null
+            }
+            <div className="book-container" onClick={addSaved}>
+                <div>Book: {book.title}</div>
+                <div>Author: {book.author}</div>
+                <div>Genre: {book.genre}</div>
+
+            </div>
         </div>
     )
 }

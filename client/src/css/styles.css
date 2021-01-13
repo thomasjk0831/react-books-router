@@ -4,5 +4,9 @@
 
 .book-container {
   border: 1px solid black;
+  width: 80%;
+  cursor: pointer;
+  margin: 10px auto;
+  padding: 15px;
 }
 /*# sourceMappingURL=styles.css.map */

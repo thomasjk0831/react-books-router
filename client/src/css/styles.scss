@@ -9,6 +9,9 @@
 
 .book-container{
     @include borderBox();
+    width: 80%;
     cursor: pointer;
+    margin: 10px auto;
+    padding: 15px;
 }
   
